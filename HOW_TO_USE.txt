@@ -1,0 +1,53 @@
+HOW TO USE THESE FIXED FILES
+=============================
+
+Step 1: First clone the original project (if not done already)
+-----------------------------------------------------------------
+git clone https://github.com/vishvaspatel/GrowFarm.git
+cd GrowFarm
+
+Step 2: Copy these fixed files INTO your cloned GrowFarm folder
+-----------------------------------------------------------------
+1. Copy: server/config/mongoose.js
+   Paste into: GrowFarm/server/config/mongoose.js
+   (replace the old file)
+
+2. Copy: server/.env.example
+   Paste into: GrowFarm/server/.env.example
+
+3. Copy: ML FAST API/requirements-minimal.txt
+   Paste into: GrowFarm/ML FAST API/requirements-minimal.txt
+
+Step 3: Create your real .env file (server folder)
+-----------------------------------------------------------------
+- In GrowFarm/server/, create a NEW file named exactly:  .env
+- Copy the content from .env.example into it
+- Replace with YOUR real MongoDB Atlas link
+  (Get free one at: https://mongodb.com/cloud/atlas)
+
+Example:
+MONGO_URI=mongodb+srv://yourname:yourpassword@cluster0.mongodb.net/growfarm
+
+Step 4: Install dotenv package (needed for the fix to work)
+-----------------------------------------------------------------
+cd server
+npm install dotenv
+npm install
+npm start
+
+Step 5: Run the ML part with the SHORT install list
+-----------------------------------------------------------------
+cd "ML FAST API"
+pip install -r requirements-minimal.txt
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+IMPORTANT: Use Python 3.10 or 3.11 (not 3.12+), or it will crash
+on the "distutils" import.
+
+Step 6: Run the client (frontend website)
+-----------------------------------------------------------------
+cd client
+npm install
+npm start
+
+That's it - all 3 parts (server, ML, client) should now run.
